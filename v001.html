@@ -4,18 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Video</title>
+<title>Quran Video</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100%;
     background: #000;
 }
 
@@ -23,375 +19,39 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
-.player {
+.video-box {
     width: 100%;
     max-width: 1100px;
     aspect-ratio: 16 / 9;
-    background: #000;
     position: relative;
+    background: #000;
     overflow: hidden;
 }
 
-.player iframe {
+.video-box iframe {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border: 0;
-    display: block;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="player">
+<div class="video-box">
 
 <iframe
-    src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
-    allow="autoplay; fullscreen"
-    allowfullscreen>
+src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
+allow="autoplay; fullscreen"
+allowfullscreen>
 </iframe>
 
 </div>
-
-</body>
-</html>        video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-            background: #000;
-        }
-
-        @media (max-width: 600px) {
-            .player-wrapper {
-                width: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="player-wrapper">
-
-    <video
-        controls
-        playsinline
-        preload="metadata"
-    >
-        <source
-            src="https://drive.google.com/uc?export=download&id=1N-ZimNgsHiCiQXlOpiCiQXlOpiuxwdv-71r5iq0f"
-            type="video/mp4"
-        >
-
-        Your browser does not support HTML5 video.
-    </video>
-
-</div>
-
-</body>
-</html>        aspect-ratio: 16 / 9;
-        background: #000;
-        overflow: hidden;
-    }
-
-    /* Google Drive original player */
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        border: none;
-        display: block;
-    }
-
-    /* Video information */
-    .info {
-        padding: 16px 18px 25px;
-        background: #000;
-        color: #fff;
-    }
-
-    .title {
-        margin: 0;
-        font-size: 19px;
-        font-weight: 600;
-        line-height: 1.4;
-    }
-
-    .brand {
-        margin-top: 6px;
-        color: #999;
-        font-size: 13px;
-    }
-
-    /* Mobile */
-    @media (max-width: 600px) {
-
-        .video-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-        }
-
-        .info {
-            padding: 14px 15px 22px;
-        }
-
-        .title {
-            font-size: 17px;
-        }
-
-        .brand {
-            font-size: 12px;
-        }
-    }
-
-    /* Desktop */
-    @media (min-width: 601px) {
-
-        body {
-            background: #111;
-        }
-
-        .page {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-    }
-</style>
-
-</head>
-
-<body>
-
-<div class="page">
-
-    <!-- VIDEO -->
-    <div class="video-container">
-
-        <iframe
-            src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
-            allow="autoplay; fullscreen"
-            allowfullscreen>
-        </iframe>
-
-    </div>
-
-
-    <!-- INFORMATION -->
-    <div class="info">
-
-        <h1 class="title">
-            Video 001
-        </h1>
-
-        <div class="brand">
-            Daruttahlil Quran
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-</html>    max-width: 1100px;
-    margin: 0 auto;
-    background: #000;
-}
-
-/* Video area */
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-}
-
-/* Google Drive player */
-.video-wrapper iframe {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    border: 0;
-    margin: 0;
-    padding: 0;
-
-    display: block;
-
-    background: #000;
-}
-
-/* Loading layer */
-.loading {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #000;
-
-    z-index: 2;
-    pointer-events: none;
-
-    transition: opacity 0.4s ease;
-}
-
-.loading.hide {
-    opacity: 0;
-}
-
-.loader {
-    width: 34px;
-    height: 34px;
-
-    border: 3px solid rgba(255,255,255,0.25);
-    border-top-color: #fff;
-
-    border-radius: 50%;
-
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Bottom information */
-.info {
-    padding: 18px 20px 28px;
-    background: #000;
-}
-
-.title {
-    margin: 0;
-
-    font-size: 21px;
-    line-height: 1.4;
-
-    font-weight: 600;
-}
-
-.subtitle {
-    margin-top: 7px;
-
-    font-size: 14px;
-    line-height: 1.5;
-
-    color: #aaa;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-
-    .video-wrapper {
-        border-radius: 0;
-    }
-
-    .info {
-        padding: 15px 16px 24px;
-    }
-
-    .title {
-        font-size: 18px;
-    }
-
-    .subtitle {
-        font-size: 13px;
-    }
-}
-
-/* Desktop */
-@media (min-width: 601px) {
-
-    body {
-        background: #111;
-    }
-
-    .page {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<main class="page">
-
-    <!-- VIDEO -->
-    <div class="video-wrapper">
-
-        <!-- Loading -->
-        <div class="loading" id="loading">
-            <div class="loader"></div>
-        </div>
-
-        <!-- GOOGLE DRIVE VIDEO -->
-        <iframe
-            id="player"
-            src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-
-    </div>
-
-
-    <!-- VIDEO INFORMATION -->
-    <section class="info">
-
-        <h1 class="title">
-            Video 001
-        </h1>
-
-        <div class="subtitle">
-            Daruttahlil Quran
-        </div>
-
-    </section>
-
-</main>
-
-
-<script>
-
-/* Hide loading screen after player loads */
-
-const player = document.getElementById("player");
-const loading = document.getElementById("loading");
-
-player.addEventListener("load", function () {
-
-    setTimeout(function () {
-        loading.classList.add("hide");
-    }, 500);
-
-});
-
-</script>
 
 </body>
 </html>
