@@ -25,28 +25,55 @@ body {
     width: 100%;
     height: 100%;
     background: #000;
+    overflow: hidden;
 }
 
 body {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
+/* PLAYER */
 .player {
     width: 100vw;
+    height: 56.25vw;
     max-width: 1100px;
-    aspect-ratio: 16 / 9;
-    background: #000;
     position: relative;
+    background: #000;
+    overflow: hidden;
 }
 
-video {
+/* GOOGLE DRIVE PLAYER */
+.player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     width: 100%;
     height: 100%;
+
+    border: 0;
+    margin: 0;
+    padding: 0;
+
     display: block;
-    object-fit: contain;
+}
+
+/* HIDE GOOGLE DRIVE SEEK BAR */
+.hide-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 58px;
+
     background: #000;
+
+    z-index: 10;
+
+    pointer-events: none;
 }
 
 </style>
@@ -57,18 +84,14 @@ video {
 
 <div class="player">
 
-<video
-    id="video"
-    controls
-    playsinline
-    preload="metadata">
+    <iframe
+        src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+    </iframe>
 
-    <!-- এখানে direct MP4 URL বসবে -->
-    <source
-        src="YOUR_DIRECT_MP4_URL_HERE"
-        type="video/mp4">
-
-</video>
+    <!-- Hide bottom seek bar -->
+    <div class="hide-controls"></div>
 
 </div>
 
