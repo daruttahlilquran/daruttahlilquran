@@ -3,91 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Quran Video</title>
 
 <style>
-*{
-    box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    background:#000;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #000;
 }
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     font-family: Arial, sans-serif;
 }
 
-.player{
-    width:100%;
-    max-width:1000px;
-    background:#000;
+.player {
+    width: 100%;
+    max-width: 1000px;
+    background: #000;
 }
 
-.video{
-    width:100%;
-    aspect-ratio:16/9;
-    border:0;
-    display:block;
+.video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    display: block;
+    background: #000;
 }
 
-.message{
-    color:#fff;
-    text-align:center;
-    padding:20px;
-    font-size:16px;
-    line-height:1.6;
+.message {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 25px 15px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-@media(max-width:600px){
-    .player{
-        width:100%;
+@media (max-width: 600px) {
+
+    .player {
+        width: 100%;
+        max-width: none;
     }
+
+    .video {
+        width: 100vw;
+        height: 56.25vw;
+    }
+
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="player" id="playerBox">
-  <div class="message">Loading video...</div>
+
+    <div class="message">
+        Loading video...
+    </div>
+
 </div>
 
+
 <script>
-function getVideoId(){
-    var params = new URLSearchParams(window.location.search);
+
+function getVideoId() {
+
+    const params =
+        new URLSearchParams(window.location.search);
+
     return params.get("id");
+
 }
 
-function loadVideo(){
-    var box = document.getElementById("playerBox");
-    var videoId = getVideoId();
 
-    if(!videoId){
-        box.innerHTML = '<div class="message">ভিডিও পাওয়া যায়নি।<br>QR code-টি সঠিকভাবে scan করুন।</div>';
+function loadVideo() {
+
+    const box =
+        document.getElementById("playerBox");
+
+    const videoId =
+        getVideoId();
+
+
+    /* No Video ID */
+
+    if (!videoId) {
+
+        box.innerHTML = `
+            <div class="message">
+                ভিডিও পাওয়া যায়নি।<br>
+                QR code-টি সঠিকভাবে scan করুন।
+            </div>
+        `;
+
         return;
     }
 
-    var src = "https://drive.google.com/file/d/" + videoId + "/preview";
 
-    var iframe = document.createElement("iframe");
+    /* Google Drive Preview */
+
+    const src =
+        "https://drive.google.com/file/d/"
+        + encodeURIComponent(videoId)
+        + "/preview";
+
+
+    /* Create Google Drive Player */
+
+    const iframe =
+        document.createElement("iframe");
+
+
     iframe.className = "video";
-    iframe.setAttribute("src", src);
-    iframe.setAttribute("allow", "autoplay; fullscreen");
-    iframe.setAttribute("allowfullscreen", "");
+
+    iframe.src = src;
+
+    iframe.setAttribute(
+        "allow",
+        "autoplay; fullscreen"
+    );
+
+    iframe.setAttribute(
+        "allowfullscreen",
+        ""
+    );
+
+    iframe.setAttribute(
+        "frameborder",
+        "0"
+    );
+
+
+    /* Remove Loading */
 
     box.innerHTML = "";
+
     box.appendChild(iframe);
+
 }
 
+
 loadVideo();
+
 </script>
 
 </body>
