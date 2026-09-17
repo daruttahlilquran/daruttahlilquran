@@ -2,39 +2,146 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               viewport-fit=cover">
-
-<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Video 001</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
 
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #000;
+    }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    background: #000;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-}
+    body {
+        font-family: Arial, sans-serif;
+    }
 
-/* Main page */
-.page {
-    width: 100%;
-    max-width: 1100px;
+    .page {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #000;
+    }
+
+    /* 16:9 YouTube-style video area */
+    .video-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        overflow: hidden;
+    }
+
+    /* Google Drive original player */
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        border: none;
+        display: block;
+    }
+
+    /* Video information */
+    .info {
+        padding: 16px 18px 25px;
+        background: #000;
+        color: #fff;
+    }
+
+    .title {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .brand {
+        margin-top: 6px;
+        color: #999;
+        font-size: 13px;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .info {
+            padding: 14px 15px 22px;
+        }
+
+        .title {
+            font-size: 17px;
+        }
+
+        .brand {
+            font-size: 12px;
+        }
+    }
+
+    /* Desktop */
+    @media (min-width: 601px) {
+
+        body {
+            background: #111;
+        }
+
+        .page {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- VIDEO -->
+    <div class="video-container">
+
+        <iframe
+            src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+    <!-- INFORMATION -->
+    <div class="info">
+
+        <h1 class="title">
+            Video 001
+        </h1>
+
+        <div class="brand">
+            Daruttahlil Quran
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>    max-width: 1100px;
     margin: 0 auto;
     background: #000;
 }
