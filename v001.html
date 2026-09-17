@@ -1,56 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Quran Video</title>
 
 <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-}
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+    }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        max-width: 1100px;
+        aspect-ratio: 16 / 9;
+        transform: translate(-50%, -50%);
+        background: black;
+    }
 
-.video-box {
-    width: 100%;
-    max-width: 1100px;
-    aspect-ratio: 16 / 9;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-}
-
-.video-box iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+    .video iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
 </style>
 </head>
 
 <body>
 
-<div class="video-box">
-
-<iframe
-src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
-allow="autoplay; fullscreen"
-allowfullscreen>
-</iframe>
-
+<div class="video">
+    <iframe
+        src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
+        allow="autoplay; fullscreen"
+        allowfullscreen>
+    </iframe>
 </div>
 
 </body>
