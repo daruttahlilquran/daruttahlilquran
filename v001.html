@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -36,44 +37,81 @@ body {
 
 /* PLAYER */
 .player {
-    width: 100vw;
-    height: 56.25vw;
-    max-width: 1100px;
     position: relative;
+    width: 100vw;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
     background: #000;
     overflow: hidden;
 }
 
-/* GOOGLE DRIVE PLAYER */
-.player iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-
+/* VIDEO */
+video {
     width: 100%;
     height: 100%;
-
-    border: 0;
-    margin: 0;
-    padding: 0;
-
     display: block;
+    object-fit: contain;
+    background: #000;
 }
 
-/* HIDE GOOGLE DRIVE SEEK BAR */
-.hide-controls {
+/* CENTER PLAY BUTTON */
+.play-button {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
 
-    height: 58px;
+    top: 50%;
+    left: 50%;
 
-    background: #000;
+    transform: translate(-50%, -50%);
 
-    z-index: 10;
+    width: 70px;
+    height: 70px;
 
-    pointer-events: none;
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(255,255,255,0.92);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+}
+
+/* PLAY ICON */
+.play-button::after {
+    content: "";
+
+    margin-left: 5px;
+
+    width: 0;
+    height: 0;
+
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 18px solid #111;
+}
+
+/* HIDE PLAY BUTTON WHILE PLAYING */
+.player.playing .play-button {
+    display: none;
+}
+
+/* SMALL SCREEN */
+@media (max-width: 600px) {
+
+    .player {
+        width: 100vw;
+        aspect-ratio: 16 / 9;
+    }
+
+    .play-button {
+        width: 62px;
+        height: 62px;
+    }
+
 }
 
 </style>
@@ -82,18 +120,68 @@ body {
 
 <body>
 
-<div class="player">
+<div class="player" id="player">
 
-    <iframe
-        src="https://drive.google.com/file/d/1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f/preview"
-        allow="autoplay; fullscreen"
-        allowfullscreen>
-    </iframe>
+    <video
+        id="video"
+        playsinline
+        preload="metadata">
 
-    <!-- Hide bottom seek bar -->
-    <div class="hide-controls"></div>
+        <source
+            src="https://drive.usercontent.google.com/download?id=1N-ZimNgsHiCiQXlOpiuxwdv-71r5iq0f&export=download"
+            type="video/mp4">
+
+    </video>
+
+    <button
+        class="play-button"
+        id="playButton"
+        aria-label="Play">
+    </button>
 
 </div>
 
+<script>
+
+const video = document.getElementById("video");
+const player = document.getElementById("player");
+const playButton = document.getElementById("playButton");
+
+function playVideo() {
+
+    video.play()
+        .then(() => {
+            player.classList.add("playing");
+        })
+        .catch((error) => {
+            console.log("Video could not play:", error);
+        });
+
+}
+
+playButton.addEventListener("click", playVideo);
+
+video.addEventListener("click", function () {
+
+    if (video.paused) {
+        playVideo();
+    } else {
+        video.pause();
+        player.classList.remove("playing");
+    }
+
+});
+
+video.addEventListener("pause", function () {
+    player.classList.remove("playing");
+});
+
+video.addEventListener("play", function () {
+    player.classList.add("playing");
+});
+
+</script>
+
 </body>
+
 </html>
